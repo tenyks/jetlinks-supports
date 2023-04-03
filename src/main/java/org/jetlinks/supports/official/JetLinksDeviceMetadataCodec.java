@@ -5,7 +5,8 @@ import org.jetlinks.core.metadata.DeviceMetadata;
 import org.jetlinks.core.metadata.DeviceMetadataCodec;
 import reactor.core.publisher.Mono;
 
-/*
+/**
+<pre>
  {
   "id": "test",
   "name": "测试",
@@ -76,6 +77,7 @@ import reactor.core.publisher.Mono;
     }
   ]
 }
+ </pre>
  */
 
 /**

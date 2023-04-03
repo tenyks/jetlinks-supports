@@ -12,7 +12,6 @@ import java.util.Map;
 public class MqttTopicUtils {
     public static boolean match(String topic, String target) {
         return TopicUtils.match(topic, target);
-
     }
 
     public static Map<String, String> getPathVariables(String template, String topic) {
