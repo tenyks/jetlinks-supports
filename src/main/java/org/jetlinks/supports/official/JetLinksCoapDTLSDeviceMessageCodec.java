@@ -8,6 +8,8 @@ import org.eclipse.californium.core.coap.CoAP;
 import org.hswebframework.web.id.IDGenerator;
 import org.jetlinks.core.message.Message;
 import org.jetlinks.core.message.codec.*;
+import org.jetlinks.core.message.codec.coap.CoapExchangeMessage;
+import org.jetlinks.core.message.codec.coap.CoapMessage;
 import org.springframework.util.StringUtils;
 import reactor.core.publisher.Mono;
 

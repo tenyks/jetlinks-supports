@@ -9,6 +9,8 @@ import org.eclipse.californium.core.server.resources.CoapExchange;
 import org.jetlinks.core.Value;
 import org.jetlinks.core.message.Message;
 import org.jetlinks.core.message.codec.*;
+import org.jetlinks.core.message.codec.coap.CoapExchangeMessage;
+import org.jetlinks.core.message.codec.coap.CoapMessage;
 import org.jetlinks.supports.official.cipher.Ciphers;
 import reactor.core.publisher.Mono;
 

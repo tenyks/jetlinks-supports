@@ -8,6 +8,8 @@ import org.jetlinks.core.device.DeviceConfigKey;
 import org.jetlinks.core.message.DeviceMessage;
 import org.jetlinks.core.message.Message;
 import org.jetlinks.core.message.codec.*;
+import org.jetlinks.core.message.codec.mqtt.MqttMessage;
+import org.jetlinks.core.message.codec.mqtt.SimpleMqttMessage;
 import reactor.core.publisher.Mono;
 
 import javax.annotation.Nonnull;

@@ -3,7 +3,7 @@ package org.jetlinks.supports.protocol;
 import lombok.Builder;
 import lombok.Getter;
 import org.jetlinks.core.message.codec.MessagePayloadType;
-import org.jetlinks.core.message.codec.MqttMessageCodecDescription;
+import org.jetlinks.core.message.codec.mqtt.MqttMessageCodecDescription;
 import reactor.core.publisher.Flux;
 
 import java.util.ArrayList;

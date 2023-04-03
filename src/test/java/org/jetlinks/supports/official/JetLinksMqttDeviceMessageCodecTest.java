@@ -8,6 +8,8 @@ import org.jetlinks.core.device.ProductInfo;
 import org.jetlinks.core.device.StandaloneDeviceMessageBroker;
 import org.jetlinks.core.message.*;
 import org.jetlinks.core.message.codec.*;
+import org.jetlinks.core.message.codec.mqtt.MqttMessage;
+import org.jetlinks.core.message.codec.mqtt.SimpleMqttMessage;
 import org.jetlinks.core.message.event.EventMessage;
 import org.jetlinks.core.message.firmware.UpgradeFirmwareMessage;
 import org.jetlinks.core.message.function.FunctionInvokeMessage;
