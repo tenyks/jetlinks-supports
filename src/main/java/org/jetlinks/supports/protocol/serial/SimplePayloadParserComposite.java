@@ -7,26 +7,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SimplePayloadParserRegistry implements PayloadParserRegistry {
+/**
+ * 通过解析器的亲缘性合并解析判断计算
+ */
+public class SimplePayloadParserComposite implements PayloadParserComposite {
 
     private Map<String, List<PayloadParser>>    parserIdx;
 
-    public SimplePayloadParserRegistry() {
+    public SimplePayloadParserComposite() {
         parserIdx = new HashMap<>();
     }
 
     @Override
-    public void registry(String uriOrTopic, PayloadParser parser) {
+    public void add(String uriOrTopic, PayloadParser parser) {
 
     }
 
     @Override
-    public void addMaskInspectHint(PayloadParser parser, int mask, int offset, int length, int expected) {
+    public void addInspectHint(PayloadParser parser, AttributeCodeExtractor extractor, String expectAttrCode) {
 
     }
 
     @Override
     public Tuple2<JSONObject, PayloadParser> parse(String uriOrTopic, byte[] payload) {
+
         return null;
     }
 }

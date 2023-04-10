@@ -11,6 +11,8 @@ import javax.annotation.Nullable;
  */
 public interface ParserPredicate {
 
+    PayloadParser   getParser();
+
     /**
      * 根据输入判别当前解析器是否适用于当前的负载
      * @param uriOrTopic    目标URI或topic，（必要）
@@ -19,11 +21,7 @@ public interface ParserPredicate {
      */
     boolean match(String uriOrTopic, byte[] payload);
 
-    /**
-     * 特征码抽取器
-     * @return  如无返回空
-     */
-    @Nullable
-    AttributeCodeExtractor  getAttributeCodeExtractor();
+    default void onComposited(PayloadParserComposite composite) {
 
+    }
 }

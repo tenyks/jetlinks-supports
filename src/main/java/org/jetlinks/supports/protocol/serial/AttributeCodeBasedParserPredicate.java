@@ -1,34 +1,41 @@
 package org.jetlinks.supports.protocol.serial;
 
-import javax.annotation.Nullable;
-
 /**
  * 基于特征码的判别器
  */
-public class AttributeCodeBasedParserPredicate implements ParserPredicate {
+public class AttributeCodeBasedParserPredicate extends AbstractParserPredicate {
 
     private AttributeCodeExtractor  extractor;
 
     /**
      * 对负载进行掩码后的期望值
      */
-    private int expected;
+    private String expectAttrCode;
 
-    public AttributeCodeBasedParserPredicate(AttributeCodeExtractor extractor, int expected) {
+    public AttributeCodeBasedParserPredicate(PayloadParser parser, AttributeCodeExtractor extractor, String expectAttrCode) {
+        super(parser);
+
         this.extractor = extractor;
-        this.expected = expected;
+        this.expectAttrCode = expectAttrCode;
     }
 
     @Override
     public boolean match(String uriOrTopic, byte[] payload) {
-        int extracted = extractor.extract(payload);
+        String extracted = extractor.extract(payload);
 
-        return (extracted == expected);
+        return expectAttrCode.equals(extracted);
     }
 
-    @Nullable
     @Override
+    public void onComposited(PayloadParserComposite composite) {
+        composite.addInspectHint(getParser(), extractor, expectAttrCode);
+    }
+
     public AttributeCodeExtractor getAttributeCodeExtractor() {
         return extractor;
+    }
+
+    public String getExpectAttributeCode() {
+        return expectAttrCode;
     }
 }
