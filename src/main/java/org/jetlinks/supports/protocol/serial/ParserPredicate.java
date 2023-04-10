@@ -1,5 +1,7 @@
 package org.jetlinks.supports.protocol.serial;
 
+import javax.annotation.Nullable;
+
 /**
  * 解析器是否适用于目标负载的判别器
  *
@@ -18,10 +20,10 @@ public interface ParserPredicate {
     boolean match(String uriOrTopic, byte[] payload);
 
     /**
-     * 当前解析器已注册到指定的Registry <br>
-     * 可用于向Registry添加性能加速元信息
-     * @param registry      解析器注册Registry，（必要）
+     * 特征码抽取器
+     * @return  如无返回空
      */
-    void onRegistered(PayloadParserRegistry registry);
+    @Nullable
+    AttributeCodeExtractor  getAttributeCodeExtractor();
 
 }
