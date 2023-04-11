@@ -8,7 +8,6 @@ import org.jetlinks.core.utils.BytesUtils;
  */
 public class PrefixAndPostfixPayloadPredicate extends AbstractParserPredicate {
 
-
     private final byte[] prefix;
 
     private final byte[] postfix;

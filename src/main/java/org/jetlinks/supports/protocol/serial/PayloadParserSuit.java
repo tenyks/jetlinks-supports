@@ -3,14 +3,16 @@ package org.jetlinks.supports.protocol.serial;
 import com.alibaba.fastjson.JSONObject;
 import reactor.util.function.Tuple2;
 
+import java.io.IOException;
+
 /**
- * 负载解析器组合，用于将多个负载解析器组合使用
+ * 一套负载解析器，用于将多个负载解析器组合使用
  *
  * @author Maxwell.Lee
  * @version 1.0
  * @since 1.2
  */
-public interface PayloadParserComposite {
+public interface PayloadParserSuit {
 
     void add(String uriOrTopic, PayloadParser parser);
 
@@ -20,7 +22,7 @@ public interface PayloadParserComposite {
      * @param extractor             特征码抽取器，（必要）；
      * @param expectAttrCode        期望的特征码，（必要）；
      */
-    void addInspectHint(PayloadParser parser, AttributeCodeExtractor extractor, String expectAttrCode);
+    void addInspectHint(PayloadParser parser, AttributeCodeExtractor extractor, Integer expectAttrCode);
 
     /**
      * 将字节串解析为字段组合的对象
@@ -28,5 +30,5 @@ public interface PayloadParserComposite {
      * @param payload       负载的字节串，可能为二进制、HEX字符串、BASE64字符串或JSON字符串
      * @return  解析结果和解析器的Tuple，如果没有适用的解析器返回空值
      */
-    Tuple2<JSONObject, PayloadParser> parse(String uriOrTopic, byte[] payload);
+    Tuple2<JSONObject, PayloadParser> parse(String uriOrTopic, byte[] payload) throws IOException;
 }

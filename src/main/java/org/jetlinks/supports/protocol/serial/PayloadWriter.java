@@ -1,5 +1,7 @@
 package org.jetlinks.supports.protocol.serial;
 
+import java.io.IOException;
+
 /**
  * （一种消息的）字段为单位的负载Writer
  *
@@ -21,5 +23,5 @@ public interface PayloadWriter {
     /**
      * @return  返回负载的字节流
      */
-    byte[]  build();
+    byte[]  build() throws IOException;
 }

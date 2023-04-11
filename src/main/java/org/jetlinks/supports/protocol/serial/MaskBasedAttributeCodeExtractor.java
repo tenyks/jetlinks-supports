@@ -1,6 +1,9 @@
 package org.jetlinks.supports.protocol.serial;
 
+import org.apache.commons.codec.binary.Hex;
 import org.jetlinks.core.utils.BytesUtils;
+
+import java.nio.ByteBuffer;
 
 /**
  * 基于掩码计算的特征码抽取器
@@ -29,11 +32,11 @@ public class MaskBasedAttributeCodeExtractor implements AttributeCodeExtractor {
     }
 
     @Override
-    public int extract(byte[] payload) {
+    public Integer extract(byte[] payload) {
         int extracted = BytesUtils.beToInt(payload, offset, length);
         int real = extracted & mask;
 
-        return (real);
+        return real;
     }
 
     @Override

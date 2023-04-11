@@ -13,7 +13,7 @@ public class AttributeCodeBasedParserPredicateTest {
 
         MaskBasedAttributeCodeExtractor extractor = new MaskBasedAttributeCodeExtractor(0xFF00, 1, 2);
 
-        AttributeCodeBasedParserPredicate predicate = new AttributeCodeBasedParserPredicate(extractor, 0x0B00);
+        AttributeCodeBasedParserPredicate predicate = new AttributeCodeBasedParserPredicate(null, extractor, 0x0B00);
 
         boolean rst = predicate.match("", buf);
         System.out.println("rst = " + rst);

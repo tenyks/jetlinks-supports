@@ -1,7 +1,5 @@
 package org.jetlinks.supports.protocol.serial;
 
-import javax.annotation.Nullable;
-
 /**
  * 解析器是否适用于目标负载的判别器
  *
@@ -21,7 +19,7 @@ public interface ParserPredicate {
      */
     boolean match(String uriOrTopic, byte[] payload);
 
-    default void onComposited(PayloadParserComposite composite) {
+    default void onComposited(PayloadParserSuit composite) {
 
     }
 }

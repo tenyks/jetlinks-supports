@@ -10,9 +10,9 @@ public class AttributeCodeBasedParserPredicate extends AbstractParserPredicate {
     /**
      * 对负载进行掩码后的期望值
      */
-    private String expectAttrCode;
+    private Integer expectAttrCode;
 
-    public AttributeCodeBasedParserPredicate(PayloadParser parser, AttributeCodeExtractor extractor, String expectAttrCode) {
+    public AttributeCodeBasedParserPredicate(PayloadParser parser, AttributeCodeExtractor extractor, Integer expectAttrCode) {
         super(parser);
 
         this.extractor = extractor;
@@ -21,13 +21,13 @@ public class AttributeCodeBasedParserPredicate extends AbstractParserPredicate {
 
     @Override
     public boolean match(String uriOrTopic, byte[] payload) {
-        String extracted = extractor.extract(payload);
+        Integer extracted = extractor.extract(payload);
 
         return expectAttrCode.equals(extracted);
     }
 
     @Override
-    public void onComposited(PayloadParserComposite composite) {
+    public void onComposited(PayloadParserSuit composite) {
         composite.addInspectHint(getParser(), extractor, expectAttrCode);
     }
 
@@ -35,7 +35,7 @@ public class AttributeCodeBasedParserPredicate extends AbstractParserPredicate {
         return extractor;
     }
 
-    public String getExpectAttributeCode() {
+    public Integer getExpectAttributeCode() {
         return expectAttrCode;
     }
 }

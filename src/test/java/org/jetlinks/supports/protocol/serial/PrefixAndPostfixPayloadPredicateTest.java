@@ -11,7 +11,7 @@ public class PrefixAndPostfixPayloadPredicateTest {
 
     @Test
     public void matchPrefixAndPostfix() {
-        PrefixAndPostfixPayloadPredicate predicate = new PrefixAndPostfixPayloadPredicate("{".getBytes(StandardCharsets.UTF_8), "}".getBytes(StandardCharsets.UTF_8), false);
+        PrefixAndPostfixPayloadPredicate predicate = new PrefixAndPostfixPayloadPredicate(null, "{".getBytes(StandardCharsets.UTF_8), "}".getBytes(StandardCharsets.UTF_8), false);
 
         Assert.assertFalse(predicate.match("", "".getBytes(StandardCharsets.UTF_8)));
         Assert.assertFalse(predicate.match("", "HELLO".getBytes(StandardCharsets.UTF_8)));
@@ -22,7 +22,7 @@ public class PrefixAndPostfixPayloadPredicateTest {
 
     @Test
     public void matchPrefix() {
-        PrefixAndPostfixPayloadPredicate predicate = new PrefixAndPostfixPayloadPredicate("{".getBytes(StandardCharsets.UTF_8), null, false);
+        PrefixAndPostfixPayloadPredicate predicate = new PrefixAndPostfixPayloadPredicate(null, "{".getBytes(StandardCharsets.UTF_8), null, false);
 
         Assert.assertFalse(predicate.match("", "".getBytes(StandardCharsets.UTF_8)));
         Assert.assertFalse(predicate.match("", "HELLO".getBytes(StandardCharsets.UTF_8)));
