@@ -76,7 +76,7 @@ public class DefaultPayloadParserSuit implements PayloadParserSuit {
 
             PayloadParser matchedParser = null;
             if (candidateParsers == null || candidateParsers.isEmpty()) {
-                if (defaultParser.getPredicate().match(uriOrTopic, payload)) {
+                if (defaultParser!= null && defaultParser.getPredicate().match(uriOrTopic, payload)) {
                     matchedParser = defaultParser;
                 }
             } else {
