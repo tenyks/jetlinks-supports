@@ -3,7 +3,7 @@ package org.jetlinks.supports.protocol;
 import org.jetlinks.core.message.DeviceMessage;
 import org.jetlinks.core.message.codec.EncodedMessage;
 import org.jetlinks.core.route.Route;
-import org.jetlinks.core.route.RoutePredict;
+import org.jetlinks.core.route.UpstreamRoutePredict;
 import org.jetlinks.supports.protocol.codec.MessageCodecDeclaration;
 
 /**
@@ -13,7 +13,7 @@ import org.jetlinks.supports.protocol.codec.MessageCodecDeclaration;
 public class SimpleMessageCodecDeclaration<R extends Route, E extends EncodedMessage> implements MessageCodecDeclaration<R, E> {
 
     private R route;
-    private RoutePredict<R, E> routePredict;
+    private UpstreamRoutePredict<R, E> upstreamRoutePredict;
     private Class<? extends DeviceMessage> thingMessageType;
 
     @Override
@@ -22,8 +22,8 @@ public class SimpleMessageCodecDeclaration<R extends Route, E extends EncodedMes
     }
 
     @Override
-    public RoutePredict<R, E> getRoutePredict() {
-        return routePredict;
+    public UpstreamRoutePredict<R, E> getUpstreamRoutePredict() {
+        return upstreamRoutePredict;
     }
 
     @Override
@@ -36,8 +36,8 @@ public class SimpleMessageCodecDeclaration<R extends Route, E extends EncodedMes
         return this;
     }
 
-    public SimpleMessageCodecDeclaration<R, E>    routePredict(RoutePredict<R, E> routePredict) {
-        this.routePredict = routePredict;
+    public SimpleMessageCodecDeclaration<R, E>    upstreamRoutePredict(UpstreamRoutePredict<R, E> routePredict) {
+        this.upstreamRoutePredict = routePredict;
         return this;
     }
 
