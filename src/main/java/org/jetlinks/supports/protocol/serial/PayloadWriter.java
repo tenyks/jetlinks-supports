@@ -1,5 +1,7 @@
 package org.jetlinks.supports.protocol.serial;
 
+import com.alibaba.fastjson.JSONObject;
+
 import java.io.IOException;
 
 /**
@@ -19,6 +21,26 @@ public interface PayloadWriter {
      * @return  返回本对象，方便链式写法
      */
     PayloadWriter write(String fieldCode, Object fieldValue);
+
+    /**
+     * 便捷方法
+     */
+    default PayloadWriter write(JSONObject message) {
+        for (String key : message.keySet()) {
+            Object val = message.get(key);
+
+            write(key, val);
+        }
+
+        return this;
+    }
+
+    /**
+     * 便捷方法
+     */
+    default byte[] writeAndBuild(JSONObject message) throws IOException {
+        return this.write(message).build();
+    }
 
     /**
      * @return  返回负载的字节流

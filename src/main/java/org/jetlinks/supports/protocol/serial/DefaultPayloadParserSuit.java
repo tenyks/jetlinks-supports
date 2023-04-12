@@ -13,21 +13,22 @@ import java.util.Map;
 /**
  * 通过解析器的亲缘性合并解析判断计算
  */
-public class SimplePayloadParserComposite implements PayloadParserSuit {
+public class DefaultPayloadParserSuit implements PayloadParserSuit {
 
     private Map<String, List<PayloadParser>> parserMap;
 
     private List<Tuple2<AttributeCodeExtractor, Map<Integer, PayloadParser>>> orderPath;
 
-    public SimplePayloadParserComposite() {
+    public DefaultPayloadParserSuit() {
         parserMap = new HashMap<>();
         orderPath = new ArrayList<>();
     }
 
     @Override
-    public void add(String uriOrTopic, PayloadParser parser) {
+    public PayloadParserSuit add(String uriOrTopic, PayloadParser parser) {
         List<PayloadParser> list = parserMap.computeIfAbsent(uriOrTopic, (k) -> new ArrayList<>());
         list.add(parser);
+        return this;
     }
 
     @Override

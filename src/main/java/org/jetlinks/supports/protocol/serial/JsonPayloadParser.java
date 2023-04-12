@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-public class JsonPayloadParser<T> implements PayloadParser {
+public class JsonPayloadParser implements PayloadParser {
 
     private final ObjectMapper    mapper;
 

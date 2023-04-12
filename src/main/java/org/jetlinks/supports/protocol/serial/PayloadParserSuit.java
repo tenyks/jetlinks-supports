@@ -14,7 +14,7 @@ import java.io.IOException;
  */
 public interface PayloadParserSuit {
 
-    void add(String uriOrTopic, PayloadParser parser);
+    PayloadParserSuit add(String uriOrTopic, PayloadParser parser);
 
     /**
      * 添加特征码判别提示（用于加速解析器的匹配）

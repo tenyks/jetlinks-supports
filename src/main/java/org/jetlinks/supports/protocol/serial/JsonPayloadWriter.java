@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -24,6 +25,16 @@ public class JsonPayloadWriter implements PayloadWriter {
     public PayloadWriter write(String fieldCode, Object fieldValue) {
         buf.put(fieldCode, fieldValue);
         return this;
+    }
+
+    @Override
+    public byte[] writeAndBuild(JSONObject message) throws IOException {
+        if (buf.isEmpty()) {
+            String jsonStr = mapper.writeValueAsString(message);
+            return jsonStr.getBytes(StandardCharsets.UTF_8);
+        } else {
+            return PayloadWriter.super.writeAndBuild(message);
+        }
     }
 
     @Override
