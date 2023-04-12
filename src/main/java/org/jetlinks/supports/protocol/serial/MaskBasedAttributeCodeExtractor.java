@@ -1,9 +1,6 @@
 package org.jetlinks.supports.protocol.serial;
 
-import org.apache.commons.codec.binary.Hex;
 import org.jetlinks.core.utils.BytesUtils;
-
-import java.nio.ByteBuffer;
 
 /**
  * 基于掩码计算的特征码抽取器

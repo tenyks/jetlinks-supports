@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import java.io.IOException;
 
 /**
- * （一种消息的）负载解析器，
+ * （一种消息的）负载解析器
  *
  * @author Maxwell.Lee
  * @version 1.0

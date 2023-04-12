@@ -15,8 +15,8 @@ public class PrefixAndPostfixPayloadPredicate extends AbstractParserPredicate {
     private final boolean ignoreBlank;
 
     /**
-     * @param prefix      前缀（可空）
-     * @param postfix     后缀（可空）
+     * @param prefix      前缀（可空，表示不检查）
+     * @param postfix     后缀（可空，表示不检查）
      * @param ignoreBlank 是否忽略开头和结尾的空字符
      */
     public PrefixAndPostfixPayloadPredicate(PayloadParser parser, byte[] prefix, byte[] postfix, boolean ignoreBlank) {

@@ -12,18 +12,18 @@ public class JsonPayloadParser implements PayloadParser {
 
     private final ParserPredicate   predicate;
 
-    @Override
-    public ParserPredicate getPredicate() {
-        return predicate;
-    }
-
     public JsonPayloadParser(ObjectMapper mapper) {
         if (mapper == null) {
             throw new IllegalArgumentException("参数不全：缺少mapper参数[0x21JPP1258]");
         }
         this.mapper = mapper;
         this.predicate = new PrefixAndPostfixPayloadPredicate(this, "{".getBytes(StandardCharsets.UTF_8),
-                                                        "}".getBytes(StandardCharsets.UTF_8), false);
+                "}".getBytes(StandardCharsets.UTF_8), false);
+    }
+
+    @Override
+    public ParserPredicate getPredicate() {
+        return predicate;
     }
 
     @Override

@@ -20,6 +20,5 @@ public interface ParserPredicate {
     boolean match(String uriOrTopic, byte[] payload);
 
     default void onComposited(PayloadParserSuit composite) {
-
     }
 }

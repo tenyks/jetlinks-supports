@@ -1,5 +1,8 @@
 package org.jetlinks.supports.protocol;
 
+/**
+ * （设备）消息负载类型
+ */
 public enum MessagePayloadType {
     JSON("JSON", "JSON字符串"),
     BINARY("BINARY", "二进制"),
