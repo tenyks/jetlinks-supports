@@ -2,6 +2,8 @@ package org.jetlinks.supports.protocol.serial;
 
 import com.alibaba.fastjson.JSONObject;
 
+import java.io.IOException;
+
 /**
  * 主题或消息负载Writer组合
  *
@@ -12,6 +14,6 @@ public interface PayloadWriterSuit {
 
     PayloadWriterSuit add(String topicOrMsgType, PayloadWriter writer);
 
-    byte[] buildPayload(String topicOrMsgType, JSONObject message);
+    byte[] buildPayload(String topicOrMsgType, JSONObject message) throws IOException;
 
 }
