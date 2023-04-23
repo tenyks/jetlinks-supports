@@ -45,4 +45,13 @@ public class SimpleMessageCodecDeclaration<R extends Route, E extends EncodedMes
         this.thingMessageType = thingMessageType;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "SimpleMessageCodecDeclaration{" +
+                "route=" + route +
+                ", upstreamRoutePredict=" + upstreamRoutePredict +
+                ", thingMessageType=" + thingMessageType +
+                '}';
+    }
 }
