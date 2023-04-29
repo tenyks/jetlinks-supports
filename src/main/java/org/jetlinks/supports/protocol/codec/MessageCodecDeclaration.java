@@ -3,16 +3,15 @@ package org.jetlinks.supports.protocol.codec;
 import com.alibaba.fastjson.JSONObject;
 import org.jetlinks.core.message.DeviceMessage;
 import org.jetlinks.core.message.codec.EncodedMessage;
-import org.jetlinks.core.route.LwM2MRoute;
 import org.jetlinks.core.route.Route;
 import org.jetlinks.core.route.UpstreamRoutePredict;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.validation.constraints.Null;
 
 /**
- * 消息编解码声明
+ * 设备消息与物模型消息（映射）声明
+ *
  *
  * @author v-lizy81
  * @date 2023/4/11 23:45
@@ -47,12 +46,4 @@ public interface MessageCodecDeclaration<R extends Route, E extends EncodedMessa
         return getThingMessageType().newInstance();
     }
 
-    default String  getMessageType() {
-        R route = getRoute();
-        if (route instanceof LwM2MRoute) {
-            return ((LwM2MRoute) route).getMessageType();
-        }
-
-        return null;
-    }
 }
