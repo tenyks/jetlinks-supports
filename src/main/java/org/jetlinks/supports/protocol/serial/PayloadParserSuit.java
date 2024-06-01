@@ -31,4 +31,5 @@ public interface PayloadParserSuit {
      * @return  解析结果和解析器的Tuple，如果没有适用的解析器返回空值
      */
     Tuple2<JSONObject, PayloadParser> parse(String uriOrTopic, byte[] payload) throws IOException;
+
 }

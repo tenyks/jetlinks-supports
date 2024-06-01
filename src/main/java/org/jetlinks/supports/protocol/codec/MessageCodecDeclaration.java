@@ -22,16 +22,19 @@ public interface MessageCodecDeclaration<R extends Route, E extends EncodedMessa
     R   getRoute();
 
     @Nullable
-    UpstreamRoutePredict<R, E> getUpstreamRoutePredict();
+    UpstreamRoutePredict<R, E>          getUpstreamRoutePredict();
 
     @Nonnull
-    Class<? extends DeviceMessage>  getThingMessageType();
+    Class<? extends DeviceMessage>      getThingMessageType();
+
+    @Nonnull
+    MessageContentType                  getPayloadContentType();
 
     /**
      * 便捷方法
      * @see UpstreamRoutePredict#isAcceptable(org.jetlinks.core.route.Route, org.jetlinks.core.message.codec.EncodedMessage, com.alibaba.fastjson.JSONObject)
      */
-    default boolean isRouteAcceptable(E message, JSONObject parsedMsg) {
+    default boolean isRouteAcceptable(@Nonnull E message, @Nullable JSONObject parsedMsg) {
         UpstreamRoutePredict<R, E> upstreamRoutePredict = getUpstreamRoutePredict();
         if (upstreamRoutePredict == null) return false;
 

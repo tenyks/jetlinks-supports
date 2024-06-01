@@ -5,6 +5,9 @@ import org.jetlinks.core.message.codec.EncodedMessage;
 import org.jetlinks.core.route.Route;
 import org.jetlinks.core.route.UpstreamRoutePredict;
 import org.jetlinks.supports.protocol.codec.MessageCodecDeclaration;
+import org.jetlinks.supports.protocol.codec.MessageContentType;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author v-lizy81
@@ -13,8 +16,12 @@ import org.jetlinks.supports.protocol.codec.MessageCodecDeclaration;
 public class SimpleMessageCodecDeclaration<R extends Route, E extends EncodedMessage> implements MessageCodecDeclaration<R, E> {
 
     private R route;
-    private UpstreamRoutePredict<R, E> upstreamRoutePredict;
-    private Class<? extends DeviceMessage> thingMessageType;
+
+    private UpstreamRoutePredict<R, E>      upstreamRoutePredict;
+
+    private Class<? extends DeviceMessage>  thingMessageType;
+
+    private MessageContentType              payloadContentType;
 
     @Override
     public R getRoute() {
@@ -29,6 +36,12 @@ public class SimpleMessageCodecDeclaration<R extends Route, E extends EncodedMes
     @Override
     public Class<? extends DeviceMessage> getThingMessageType() {
         return thingMessageType;
+    }
+
+    @Nonnull
+    @Override
+    public MessageContentType getPayloadContentType() {
+        return payloadContentType;
     }
 
     public SimpleMessageCodecDeclaration<R, E>    route(R route) {
@@ -46,12 +59,18 @@ public class SimpleMessageCodecDeclaration<R extends Route, E extends EncodedMes
         return this;
     }
 
+    public SimpleMessageCodecDeclaration<R, E>    payloadContentType(MessageContentType type) {
+        this.payloadContentType = type;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "SimpleMessageCodecDeclaration{" +
                 "route=" + route +
                 ", upstreamRoutePredict=" + upstreamRoutePredict +
                 ", thingMessageType=" + thingMessageType +
+                ", payloadContentType=" + payloadContentType +
                 '}';
     }
 }
