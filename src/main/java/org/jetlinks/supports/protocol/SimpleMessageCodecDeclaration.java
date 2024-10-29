@@ -2,6 +2,7 @@ package org.jetlinks.supports.protocol;
 
 import org.jetlinks.core.message.DeviceMessage;
 import org.jetlinks.core.message.codec.EncodedMessage;
+import org.jetlinks.core.route.DownstreamRoutePredict;
 import org.jetlinks.core.route.Route;
 import org.jetlinks.core.route.UpstreamRoutePredict;
 import org.jetlinks.supports.protocol.codec.MessageCodecDeclaration;
@@ -10,14 +11,17 @@ import org.jetlinks.supports.protocol.codec.MessageContentType;
 import javax.annotation.Nonnull;
 
 /**
+ * 
  * @author v-lizy81
  * @date 2023/4/12 00:20
  */
 public class SimpleMessageCodecDeclaration<R extends Route, E extends EncodedMessage> implements MessageCodecDeclaration<R, E> {
 
-    private R route;
+    private R                               route;
 
     private UpstreamRoutePredict<R, E>      upstreamRoutePredict;
+
+    private DownstreamRoutePredict<R, DeviceMessage>    downstreamRoutePredict;
 
     private Class<? extends DeviceMessage>  thingMessageType;
 
@@ -31,6 +35,11 @@ public class SimpleMessageCodecDeclaration<R extends Route, E extends EncodedMes
     @Override
     public UpstreamRoutePredict<R, E> getUpstreamRoutePredict() {
         return upstreamRoutePredict;
+    }
+
+    @Override
+    public DownstreamRoutePredict<R, DeviceMessage> getDownstreamRoutePredict() {
+        return downstreamRoutePredict;
     }
 
     @Override
@@ -54,6 +63,11 @@ public class SimpleMessageCodecDeclaration<R extends Route, E extends EncodedMes
         return this;
     }
 
+    public SimpleMessageCodecDeclaration<R, E>    downstreamRoutePredict(DownstreamRoutePredict<R, DeviceMessage> routePredict) {
+        this.downstreamRoutePredict = routePredict;
+        return this;
+    }
+
     public SimpleMessageCodecDeclaration<R, E>    thingMessageType(Class<? extends DeviceMessage> thingMessageType) {
         this.thingMessageType = thingMessageType;
         return this;
@@ -69,6 +83,7 @@ public class SimpleMessageCodecDeclaration<R extends Route, E extends EncodedMes
         return "SimpleMessageCodecDeclaration{" +
                 "route=" + route +
                 ", upstreamRoutePredict=" + upstreamRoutePredict +
+                ", downstreamRoutePredict=" + downstreamRoutePredict +
                 ", thingMessageType=" + thingMessageType +
                 ", payloadContentType=" + payloadContentType +
                 '}';
