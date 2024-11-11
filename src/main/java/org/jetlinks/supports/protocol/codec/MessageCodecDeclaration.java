@@ -1,6 +1,7 @@
 package org.jetlinks.supports.protocol.codec;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.jetlinks.core.message.DeviceMessage;
 import org.jetlinks.core.message.codec.EncodedMessage;
 import org.jetlinks.core.route.DownstreamRoutePredict;
@@ -48,7 +49,7 @@ public interface MessageCodecDeclaration<R extends Route, E extends EncodedMessa
         return predict.isAcceptable(getRoute(), message, parsedMsg);
     }
 
-    default boolean isRouteAcceptableDownload(@Nonnull DeviceMessage message) {
+    default boolean isRouteAcceptableDownstream(@Nonnull DeviceMessage message) {
         DownstreamRoutePredict<R, DeviceMessage> predict = getDownstreamRoutePredict();
         if (predict == null) return false;
 
